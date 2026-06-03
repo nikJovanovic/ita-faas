@@ -22,6 +22,13 @@
       "when": 1780483239756,
       "tag": "0002_rpc_functions",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1780484234528,
+      "tag": "0003_event_wiring",
+      "breakpoints": true
     }
   ]
 }
