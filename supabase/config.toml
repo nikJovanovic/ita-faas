@@ -411,3 +411,17 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 # declarative_schema_path = "./database"
 # JSON string passed through to pg-delta SQL formatting.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":80,\"commaStyle\":\"trailing\"}"
+
+# Event-triggered functions are called by DB webhooks / pg_cron, not end users,
+# so skip the gateway JWT check — they verify the WEBHOOK_SECRET header instead.
+[functions.on-user-created]
+verify_jwt = false
+
+[functions.on-snippet-change]
+verify_jwt = false
+
+[functions.on-attachment-uploaded]
+verify_jwt = false
+
+[functions.daily-digest]
+verify_jwt = false
