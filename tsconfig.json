@@ -27,6 +27,6 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
   },
-  // Deno owns these (see .vscode/settings.json); keep the Bun/TS server out.
-  "exclude": ["supabase/functions"]
+  // Deno owns supabase/functions and Next owns frontend — keep this TS server out.
+  "exclude": ["supabase/functions", "frontend"]
 }
