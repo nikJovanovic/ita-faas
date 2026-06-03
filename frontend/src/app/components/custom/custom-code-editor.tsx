@@ -54,7 +54,7 @@ export function CodeEditor({
       {/* gutter — one logical line number per row */}
       <div
         aria-hidden
-        className="sticky left-0 z-10 shrink-0 select-none border-r py-2 pr-2 pl-3 text-right font-mono text-[0.75rem] leading-[1.625] text-muted-foreground/50"
+        className="sticky left-0 z-10 shrink-0 select-none border-r py-2 pr-2 pl-3 text-right font-mono text-[0.75rem] leading-relaxed text-muted-foreground/50"
         style={{ backgroundColor: SURFACE }}
       >
         {Array.from({ length: lineCount }, (_, i) => (

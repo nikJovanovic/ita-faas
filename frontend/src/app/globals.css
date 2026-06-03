@@ -153,13 +153,17 @@
   tab-size: 2;
 }
 .shiki-host .shiki,
-.shiki-host .shiki span {
+.shiki-host .shiki span,
+.shiki-editor .shiki,
+.shiki-editor .shiki span {
   color: var(--shiki-light);
 }
 .dark .shiki-host .shiki {
   background-color: var(--shiki-dark-bg);
 }
 .dark .shiki-host .shiki,
-.dark .shiki-host .shiki span {
+.dark .shiki-host .shiki span,
+.dark .shiki-editor .shiki,
+.dark .shiki-editor .shiki span {
   color: var(--shiki-dark);
 }
