@@ -1,0 +1,28 @@
+# ── Secrets / env ───────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.env.keys
+
+# ── Supabase ────────────────────────────────────────────────
+supabase/.branches
+supabase/.temp
+supabase/.env
+
+# ── Node / frontend (vaja9) ─────────────────────────────────
+node_modules/
+dist/
+build/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Deno (edge functions) ───────────────────────────────────
+.deno/
+
+# ── Editor / OS ─────────────────────────────────────────────
+.DS_Store
+*.swp
+.idea/
