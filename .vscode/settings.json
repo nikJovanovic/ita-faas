@@ -4,5 +4,10 @@
   "deno.lint": true,
 
   "biome.lsp.bin": "frontend/node_modules/.bin/biome",
-  "biome.requireConfiguration": true
+  "biome.requireConfiguration": true,
+
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit"
+  }
 }

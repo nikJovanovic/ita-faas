@@ -22,7 +22,13 @@ export function LanguageIcon({
   );
 }
 
-export function FileIcon({ name, className }: { name: string; className?: string }) {
+export function FileIcon({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}) {
   return (
     // biome-ignore lint/performance/noImgElement: tiny static SVG, no optimization needed
     <img

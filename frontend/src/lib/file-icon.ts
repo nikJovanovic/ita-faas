@@ -1,6 +1,11 @@
 import iconMap from "./icon-map.json";
 
-const { languageIds, fileExtensions, fileNames, file: DEFAULT } = iconMap as {
+const {
+  languageIds,
+  fileExtensions,
+  fileNames,
+  file: DEFAULT,
+} = iconMap as {
   languageIds: Record<string, string>;
   fileExtensions: Record<string, string>;
   fileNames: Record<string, string>;
