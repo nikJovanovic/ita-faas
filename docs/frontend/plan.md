@@ -49,10 +49,11 @@ language or uploaded file extension resolves; unknowns fall back to the file ico
    owns data; `custom-app-sidebar` is presentational).
 3. ✅ Snippet grid + cards — list/search/tag-filter, Skeleton + Empty states, Material
    language icons, relative time. (Shiki preview deferred to polish.)
-4. ⬜ Language Combobox (Popover + Command, Material icons) — folded into the editor.
-5. ⬜ Sheet editor — create/edit, tags, public switch, delete (AlertDialog), toasts;
-   wire the New button + card click.
-6. ⬜ Attachments — upload (create-url → PUT) + list + delete in the editor.
+4. ✅ Language Combobox (Popover + Command, Material icons) — `custom-language-combobox`.
+5. ✅ Sheet editor — create/edit, tags, public switch, delete (AlertDialog), toasts;
+   New button + card click wired (`custom-snippet-sheet`).
+6. ✅ Attachments — upload (create-url → PUT) + list + delete in the editor
+   (`custom-snippet-attachments`, edit mode only; optimistic delete, file icons).
 7. ⬜ Polish pass — ⌘K palette, copy buttons, colored tags, relative time, animations.
 
 > Keep this file's statuses updated as increments land.

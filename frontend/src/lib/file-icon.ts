@@ -17,7 +17,8 @@ const url = (name: string) => `/icons/${name}.svg`;
 /** Material icon URL for a snippet language id (falls back to the file icon). */
 export function iconForLanguage(language?: string | null): string {
   if (!language) return url(DEFAULT);
-  return url(languageIds[language] ?? DEFAULT);
+  // Some combobox ids (tsx, jsx) are extensions, not Material language ids.
+  return url(languageIds[language] ?? fileExtensions[language] ?? DEFAULT);
 }
 
 /** Material icon URL for a filename — exact name, then longest extension, then fallback. */

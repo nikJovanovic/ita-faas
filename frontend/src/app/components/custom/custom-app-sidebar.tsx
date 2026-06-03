@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -127,9 +126,9 @@ export function AppSidebar({
             <span className="truncate text-sm">{user.email}</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent side="top" align="start" className="w-56">
-            <DropdownMenuLabel className="truncate">
+            <div className="truncate px-2 py-1.5 text-sm font-medium">
               {user.email}
-            </DropdownMenuLabel>
+            </div>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => supabase.auth.signOut()}>
               <LogOut className="size-4" />

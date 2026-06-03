@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { AppSidebar } from "@/app/components/custom/custom-app-sidebar";
 import { SnippetCard } from "@/app/components/custom/custom-snippet-card";
+import { SnippetSheet } from "@/app/components/custom/custom-snippet-sheet";
 import { ThemeToggle } from "@/app/components/custom/custom-theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +31,8 @@ export function Dashboard({ user }: { user: User }) {
   const [tags, setTags] = useState<TagCount[] | null>(null);
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [editing, setEditing] = useState<Snippet | "new" | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
 
   const refreshMeta = useCallback(() => {
     api
@@ -46,6 +49,7 @@ export function Dashboard({ user }: { user: User }) {
     refreshMeta();
   }, [refreshMeta]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reloadKey is an intentional refetch trigger after mutations
   useEffect(() => {
     let active = true;
     setSnippets(null);
@@ -71,7 +75,7 @@ export function Dashboard({ user }: { user: User }) {
       active = false;
       clearTimeout(timer);
     };
-  }, [query, activeTag]);
+  }, [query, activeTag, reloadKey]);
 
   return (
     <SidebarProvider>
@@ -96,10 +100,7 @@ export function Dashboard({ user }: { user: User }) {
           </div>
           <div className="ml-auto flex items-center gap-1">
             <ThemeToggle />
-            <Button
-              size="sm"
-              onClick={() => toast("Editor lands in the next step")}
-            >
+            <Button size="sm" onClick={() => setEditing("new")}>
               <Plus className="size-4" />
               New
             </Button>
@@ -147,12 +148,24 @@ export function Dashboard({ user }: { user: User }) {
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {snippets.map((s) => (
-                <SnippetCard key={s.id} snippet={s} />
+                <SnippetCard key={s.id} snippet={s} onOpen={setEditing} />
               ))}
             </div>
           )}
         </main>
       </SidebarInset>
+
+      <SnippetSheet
+        open={editing !== null}
+        onOpenChange={(o) => {
+          if (!o) setEditing(null);
+        }}
+        snippet={editing === "new" ? null : editing}
+        onSaved={() => {
+          setReloadKey((k) => k + 1);
+          refreshMeta();
+        }}
+      />
     </SidebarProvider>
   );
 }
