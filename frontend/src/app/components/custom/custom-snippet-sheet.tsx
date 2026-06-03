@@ -3,6 +3,7 @@
 import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { CodeEditor } from "@/app/components/custom/custom-code-editor";
 import { LanguageCombobox } from "@/app/components/custom/custom-language-combobox";
 import { SnippetAttachments } from "@/app/components/custom/custom-snippet-attachments";
 import {
@@ -29,7 +30,6 @@ import {
 } from "@/components/ui/sheet";
 import { Spinner } from "@/components/ui/spinner";
 import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
 import { api, type Snippet } from "@/lib/api";
 
 function parseTags(text: string): string[] {
@@ -155,13 +155,13 @@ export function SnippetSheet({
 
           <div className="flex flex-1 flex-col gap-2">
             <Label htmlFor="body">Code</Label>
-            <Textarea
+            <CodeEditor
               id="body"
               value={body}
-              onChange={(e) => setBody(e.target.value)}
+              language={language}
+              onChange={setBody}
               placeholder="paste your snippet…"
-              className="min-h-48 flex-1 resize-none font-mono text-xs"
-              spellCheck={false}
+              className="min-h-48 flex-1"
             />
           </div>
 

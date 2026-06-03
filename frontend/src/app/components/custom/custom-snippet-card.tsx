@@ -1,7 +1,8 @@
 "use client";
 
+import { CodeBlock } from "@/app/components/custom/custom-code-block";
 import { LanguageIcon } from "@/app/components/custom/custom-file-icon";
-import { Badge } from "@/components/ui/badge";
+import { TagBadge } from "@/app/components/custom/custom-tag-badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Tooltip,
@@ -21,7 +22,7 @@ export function SnippetCard({
   return (
     <Card
       onClick={() => onOpen?.(snippet)}
-      className="cursor-pointer gap-3 transition-colors hover:border-primary/50"
+      className="cursor-pointer gap-3 transition-all duration-200 animate-in fade-in-0 zoom-in-95 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
     >
       <CardHeader>
         <div className="flex min-w-0 items-center gap-2">
@@ -30,15 +31,15 @@ export function SnippetCard({
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
-        <pre className="line-clamp-4 max-h-24 overflow-hidden whitespace-pre-wrap break-words rounded bg-muted/60 p-2 text-xs text-muted-foreground">
-          {snippet.body || "—"}
-        </pre>
+        <CodeBlock
+          code={snippet.body}
+          language={snippet.language}
+          className="max-h-32"
+        />
         {snippet.tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {snippet.tags.map((t) => (
-              <Badge key={t} variant="secondary">
-                {t}
-              </Badge>
+              <TagBadge key={t} tag={t} />
             ))}
           </div>
         )}

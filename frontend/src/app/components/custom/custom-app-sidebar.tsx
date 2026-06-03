@@ -2,8 +2,8 @@
 
 import type { User } from "@supabase/supabase-js";
 import { Braces, LogOut } from "lucide-react";
+import { TagBadge } from "@/app/components/custom/custom-tag-badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -102,13 +102,12 @@ export function AppSidebar({
                       onSelectTag?.(activeTag === t.tag ? null : t.tag)
                     }
                   >
-                    <Badge
-                      variant={activeTag === t.tag ? "default" : "secondary"}
+                    <TagBadge
+                      tag={t.tag}
+                      count={t.count}
+                      active={activeTag === t.tag}
                       className="cursor-pointer"
-                    >
-                      {t.tag}
-                      <span className="ml-1 opacity-60">{t.count}</span>
-                    </Badge>
+                    />
                   </button>
                 ))}
               </div>

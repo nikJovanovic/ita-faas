@@ -5,6 +5,7 @@ import { FileCode, Plus, Search } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { AppSidebar } from "@/app/components/custom/custom-app-sidebar";
+import { CommandPalette } from "@/app/components/custom/custom-command-palette";
 import { SnippetCard } from "@/app/components/custom/custom-snippet-card";
 import { SnippetSheet } from "@/app/components/custom/custom-snippet-sheet";
 import { ThemeToggle } from "@/app/components/custom/custom-theme-toggle";
@@ -17,6 +18,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
+import { Kbd } from "@/components/ui/kbd";
 import {
   SidebarInset,
   SidebarProvider,
@@ -95,8 +97,11 @@ export function Dashboard({ user }: { user: User }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search snippets…"
-              className="pl-8"
+              className="px-8"
             />
+            <Kbd className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2">
+              ⌘K
+            </Kbd>
           </div>
           <div className="ml-auto flex items-center gap-1">
             <ThemeToggle />
@@ -154,6 +159,12 @@ export function Dashboard({ user }: { user: User }) {
           )}
         </main>
       </SidebarInset>
+
+      <CommandPalette
+        snippets={snippets ?? []}
+        onNew={() => setEditing("new")}
+        onOpen={setEditing}
+      />
 
       <SnippetSheet
         open={editing !== null}

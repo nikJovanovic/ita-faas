@@ -54,6 +54,9 @@ language or uploaded file extension resolves; unknowns fall back to the file ico
    New button + card click wired (`custom-snippet-sheet`).
 6. ✅ Attachments — upload (create-url → PUT) + list + delete in the editor
    (`custom-snippet-attachments`, edit mode only; optimistic delete, file icons).
-7. ⬜ Polish pass — ⌘K palette, copy buttons, colored tags, relative time, animations.
+7. ✅ Polish pass — Shiki highlighting (cards via `custom-code-block`, editor via
+   `custom-code-editor` with a transparent textarea overlay + line-number gutter),
+   copy buttons, ⌘K command palette (`custom-command-palette`), colored tag chips
+   (`custom-tag-badge` from `--chart-*`), card entrance/hover animations, ⌘K hint.
 
 > Keep this file's statuses updated as increments land.

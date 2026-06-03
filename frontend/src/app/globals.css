@@ -132,3 +132,34 @@
     @apply font-mono;
   }
 }
+
+/* Shiki dual-theme: github-light by default, github-dark under .dark. */
+.shiki-host .shiki {
+  margin: 0;
+  padding: 0.5rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  background-color: var(--shiki-light-bg);
+}
+/* Editor overlay (self-contained, NOT .shiki-host): transparent bg + no wrap +
+   exact metrics so the caret tracks the text and the box stays one surface. */
+.shiki-editor .shiki {
+  margin: 0;
+  padding: 0.5rem;
+  white-space: pre;
+  background: transparent;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.625;
+  tab-size: 2;
+}
+.shiki-host .shiki,
+.shiki-host .shiki span {
+  color: var(--shiki-light);
+}
+.dark .shiki-host .shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.dark .shiki-host .shiki,
+.dark .shiki-host .shiki span {
+  color: var(--shiki-dark);
+}
