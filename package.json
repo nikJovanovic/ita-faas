@@ -1,0 +1,21 @@
+{
+  "name": "ita-faas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "CodeStash — Supabase FaaS snippet vault. Drizzle owns the DB schema/migrations; functions run on Deno.",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.31.10"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.9"
+  }
+}
